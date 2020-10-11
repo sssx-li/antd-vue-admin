@@ -1,10 +1,9 @@
 import router from './router'
 import store from './store'
-// import { Message } from 'element-ui'
+import { message } from 'ant-design-vue'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { getToken } from '@/utils/auth' // get token from cookie
-// import getPageTitle from '@/utils/get-page-title'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
@@ -32,12 +31,11 @@ router.beforeEach(async(to, from, next) => {
         try {
           // get user info
           // await store.dispatch("/user/info");
-
           next()
         } catch (error) {
           // remove token and go to login page to re-login
           await store.dispatch('user/resetToken')
-          // Message.error(error || 'Has Error')
+          message.error(error || 'Has Error')
           next(`/login?redirect=${to.path}`)
           NProgress.done()
         }
@@ -45,7 +43,6 @@ router.beforeEach(async(to, from, next) => {
     }
   } else {
     /* has no token*/
-
     if (whiteList.indexOf(to.path) !== -1) {
       // in the free login whitelist, go directly
       next()

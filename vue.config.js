@@ -10,6 +10,17 @@ function resolve(dir) {
 // const port = process.env.port || process.env.npm_config_port || 9528; // dev port
 const port = 3000; // dev port
 module.exports = {
+  css: {
+    loaderOptions: {
+        less: {
+            /* modifyVars: {
+              //在此处设置，也可以设置直角、边框色、字体大小等
+               'primary-color': '#7c6dc5',
+            }, */
+            javascriptEnabled: true
+        }
+    }
+  },
   publicPath: "/", // 部署应用包时的基本 URL
   outputDir: "dist", // 生产环境构建文件的目录
   assetsDir: "static", // 放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录

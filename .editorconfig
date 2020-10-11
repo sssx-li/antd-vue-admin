@@ -1,0 +1,15 @@
+# http://editorconfig.org
+# 代码规范 EditorConfig帮助开发人员在不同的编辑器和IDE之间定义和维护一致的编码样式
+root = true # 是否是顶级配置文件，设置为true的时候才会停止搜索.editorconfig文件
+
+[*]
+charset = utf-8 # 编码格式
+indent_style = space # 缩进方式 <"tab" | "space">
+indent_size = 2 # 缩进大小
+end_of_line = lf # 换行符类型 <"lf" | "cr" | "crlf">
+insert_final_newline = true # 是否让文件以空行结束
+trim_trailing_whitespace = true # 是否删除行尾空格
+
+[*.md] # * 匹配除/之外的任意字符  ** 匹配任意字符串  ? 匹配任意单个字符  [name] 匹配name字符  [!name] 不匹配name字符  [s1,s2,s3] 匹配给定的字符串  [num1..num2] 匹配num1到mun2直接的整数
+insert_final_newline = false
+trim_trailing_whitespace = false

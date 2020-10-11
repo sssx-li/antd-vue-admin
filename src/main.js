@@ -4,7 +4,6 @@ import router from './router'
 import store from './store'
 // 引入所有样式
 import Antd from 'ant-design-vue' // 引入antd
-import 'ant-design-vue/dist/antd.less'
 import './styles/antd-variables.less'
 import './styles/antd-vue.less'
 Vue.use(Antd)

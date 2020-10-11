@@ -10,17 +10,6 @@ function resolve(dir) {
 // const port = process.env.port || process.env.npm_config_port || 9528; // dev port
 const port = 3000; // dev port
 module.exports = {
-  css: {
-    loaderOptions: {
-        less: {
-            /* modifyVars: {
-              //在此处设置，也可以设置直角、边框色、字体大小等
-               'primary-color': '#7c6dc5',
-            }, */
-            javascriptEnabled: true
-        }
-    }
-  },
   publicPath: "/", // 部署应用包时的基本 URL
   outputDir: "dist", // 生产环境构建文件的目录
   assetsDir: "static", // 放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录
@@ -126,5 +115,16 @@ module.exports = {
       // 优化持久化缓存的, runtime 指的是 webpack 的运行环境(具体作用就是模块解析, 加载) 和 模块信息清单, 模块信息清单在每次有模块变更(hash 变更)时都会变更, 所以我们想把这部分代码单独打包出来, 配合后端缓存策略, 这样就不会因为某个模块的变更导致包含模块信息的模块(通常会被包含在最后一个 bundle 中)缓存失效. optimization.runtimeChunk 就是告诉 webpack 是否要把这部分单独打包出来.
       config.optimization.runtimeChunk("single");
     });
+  },
+  css: {
+    loaderOptions: {
+        less: {
+            // modifyVars: {
+            //   //在此处设置，也可以设置直角、边框色、字体大小等
+            //    'primary-color': '#7c6dc5',
+            // },
+            javascriptEnabled: true
+        }
+    }
   },
 };

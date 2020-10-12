@@ -2,7 +2,7 @@
   <div class="layout-container">
     <a-layout id="components-layout-demo-custom-trigger">
       <!-- 左侧导航 -->
-      <side-bar :collapsed="collapsed" />
+      <side-bar :collapsed="collapsed" :routers="routers" />
       <!-- 右侧布局 -->
       <a-layout>
         <!-- 面包屑 -->
@@ -33,8 +33,13 @@ export default {
       collapsed: false
     }
   },
+  computed: {
+    routers() {
+      return this.$router.options.routes
+    }
+  },
   mounted() {
-    // console.log(this.$router.options) // 用于生成左侧菜单栏
+    // console.log(this.$router.options.routes) // 用于生成左侧菜单栏
   },
   methods: {
     changecollapsed() {

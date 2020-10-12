@@ -40,7 +40,6 @@ export default {
         matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }, name: 'Dashboard' }].concat(matched)
       }
       this.crumbList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
-      console.log(this.crumbList)
     },
     isDashboard(route) {
       const name = route && route.name
@@ -50,7 +49,6 @@ export default {
       return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
     },
     handleLink(item) {
-      console.log('item', item)
       const { redirect, path } = item
       if (redirect) {
         this.$router.push(redirect)
@@ -60,9 +58,7 @@ export default {
     },
     pathCompile(path) {
       // To solve this problem https://github.com/PanJiaChen/vue-element-admin/issues/561
-      console.log(path)
       const { params } = this.$route
-      console.log(pathToRegexp)
       var toPath = pathToRegexp.compile(path)
       return toPath(params)
     }

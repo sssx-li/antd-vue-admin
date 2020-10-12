@@ -1,6 +1,7 @@
 <template>
   <div class="login-container">
     <div class="loginFrom-container">
+      <SelectLanguage />
       <a-form-model
         ref="ruleForm"
         :model="form"
@@ -36,8 +37,8 @@
         </a-form-model-item>
 
         <a-form-model-item>
-          <a-button type="primary" @click="onSubmit">
-            登录
+          <a-button type="primary" @click="onSubmit" :loading="loading">
+            {{ $t('login.signIn') }}
           </a-button>
         </a-form-model-item>
       </a-form-model>
@@ -46,9 +47,14 @@
 </template>
 
 <script>
+import SelectLanguage from '@/components/langSelect/index'
 export default {
+  components: {
+    SelectLanguage
+  },
   data() {
     return {
+      loading: false,
       form: {
         username: 'admin',
         password: 'admin'
@@ -69,6 +75,7 @@ export default {
     onSubmit() {
       this.$refs.ruleForm.validate(valid => {
         if (valid) {
+          this.loading = true
           this.$store
             .dispatch('user/login', this.form)
             .then(() => {

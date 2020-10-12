@@ -21,14 +21,14 @@
       </a-layout-sider>
       <a-layout>
         <!-- 面包屑 -->
-        <!-- <a-layout-header style="background: #fff; padding: 0">
+        <a-layout-header style="background: #fff; padding: 0">
           <a-icon
             class="trigger"
             :type="collapsed ? 'menu-unfold' : 'menu-fold'"
             @click="() => (collapsed = !collapsed)"
           />
-        </a-layout-header> -->
-        <a-breadcrumb style="background: #fff; padding: 0">
+        </a-layout-header>
+       <!--  <a-breadcrumb style="background: #fff; padding: 0">
           <a-icon
             class="trigger"
             :type="collapsed ? 'menu-unfold' : 'menu-fold'"
@@ -37,7 +37,7 @@
           <a-breadcrumb-item>Home</a-breadcrumb-item>
           <a-breadcrumb-item>List</a-breadcrumb-item>
           <a-breadcrumb-item>App</a-breadcrumb-item>
-        </a-breadcrumb>
+        </a-breadcrumb> -->
         <!-- 内容 -- 路由出口 -->
         <a-layout-content
           :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"

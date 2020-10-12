@@ -1,12 +1,12 @@
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
+import Cookies from 'js-cookie'
 
 const getDefaultState = () => {
   return {
-    token: getToken()
-    // name: '',
-    // avatar: ''
+    token: getToken(),
+    language: Cookies.get('antd-vue-language') || 'en'
   }
 }
 
@@ -18,13 +18,11 @@ const mutations = {
   },
   SET_TOKEN: (state, token) => {
     state.token = token
-  }
-  /* SET_NAME: (state, name) => {
-    state.name = name
   },
-  SET_AVATAR: (state, avatar) => {
-    state.avatar = avatar
-  } */
+  SET_LANGUAGE: (state, language) => {
+    state.language = language
+    Cookies.set('antd-vue-language', language, { expires: 3650 }) // expires: cookies失效时间，没有设置时，那么 cookie 的生命周期只是在当前的会话中，关闭浏览器意味着这次会话的结束，此时 cookie 随之失效
+  }
 }
 
 const actions = {
@@ -56,10 +54,6 @@ const actions = {
             return reject('Verification failed, please Login again.')
           }
 
-          // const { name, avatar } = data;
-
-          // commit("SET_NAME", name);
-          // commit("SET_AVATAR", avatar);
           resolve(data)
         })
         .catch((error) => {
@@ -91,6 +85,11 @@ const actions = {
       commit('RESET_STATE')
       resolve()
     })
+  },
+
+  // set language
+  setLanguage({ commit }, language) {
+    commit('SET_LANGUAGE', language)
   }
 }
 

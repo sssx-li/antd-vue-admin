@@ -5,5 +5,10 @@ module.exports = {
   login: {
     signIn: 'Sign in',
     signOut: 'Sign out'
+  },
+  breadcrumb: {
+    Dashboard: 'Dashboard',
+    List: 'List',
+    Test: 'Test'
   }
 }

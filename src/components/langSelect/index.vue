@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie'
 export default {
   data() {
     return {
@@ -20,18 +19,6 @@ export default {
       ]
     }
   },
-  methods: {
-    onChange(val) {
-      this.$i18n.locale = val[0]
-      this.language = val[0]
-      this.$store.dispatch('user/setLanguage', val[0])
-      this.$message.success(this.$t('language.toggleLanguage'))
-      this.$bus.$emit('change-language')
-    }
-  },
-  mounted() {
-    this.language = this.$store.getters.language
-  },
   watch: {
     language: {
       handler: function(val, oldval) {
@@ -39,6 +26,18 @@ export default {
           item.value === this.language ? item.disabled = true : item.disabled = false
         })
       }
+    }
+  },
+  mounted() {
+    this.language = this.$store.getters.language
+  },
+  methods: {
+    onChange(val) {
+      this.$i18n.locale = val[0]
+      this.language = val[0]
+      this.$store.dispatch('user/setLanguage', val[0])
+      this.$message.success(this.$t('language.toggleLanguage'))
+      this.$bus.$emit('change-language')
     }
   }
 }
@@ -53,8 +52,9 @@ export default {
   min-height: 40px;
 }
 .select-language {
-  fill: #fff;
-  font-size: 26px;
+  fill: none;
+  color: #ccc;
+  font-size: 18px;
   &:hover {
     fill: #4cd480;
   }

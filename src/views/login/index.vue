@@ -37,7 +37,7 @@
         </a-form-model-item>
 
         <a-form-model-item>
-          <a-button type="primary" @click="onSubmit" :loading="loading">
+          <a-button type="primary" :loading="loading" @click="onSubmit">
             {{ $t('login.signIn') }}
           </a-button>
         </a-form-model-item>

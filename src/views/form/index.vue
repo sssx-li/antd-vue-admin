@@ -1,15 +1,15 @@
 <template>
   <div>
-    恭喜你 登录成功
+    {{ $t('breadcrumb.From') }}
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
 
-  }
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+
+</style>

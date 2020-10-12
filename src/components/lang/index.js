@@ -18,6 +18,7 @@ const messages = {
 const i18n = new VueI18n({
   locale: Cookies.get('antd-vue-language') || 'en', // 默认为英文
   silentFallbackWarn: true, // 取消本地化失败时的输出警告
+  silentTranslationWarn: true, // 隐藏警告信息
   messages
 })
 

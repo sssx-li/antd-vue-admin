@@ -5,5 +5,10 @@ module.exports = {
   login: {
     signIn: '登录',
     signOut: '登出'
+  },
+  breadcrumb: {
+    Dashboard: '首页',
+    List: '列表',
+    Test: '测试'
   }
 }

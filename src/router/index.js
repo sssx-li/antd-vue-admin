@@ -3,30 +3,47 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import Layout from '@/layout'
+import Layout from '@/views/layout'
 
 export const constantRoutes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/login/index')
+    component: () => import('@/views/login/index'),
+    hidden: true
   },
   {
     path: '/',
     component: Layout,
-    redirect: '/home',
+    redirect: '/dashboard',
     children: [
       {
-        path: 'home',
-        name: 'Home',
-        component: () => import('@/views/home')
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/dashboard/index'),
+        meta: { title: 'Dashboard', icon: 'user' }
       }
     ]
   },
   {
-    path: '/layout',
-    name: 'Layout',
-    component: () => import('@/views/layout/index.vue')
+    path: '/form',
+    component: Layout,
+    redirect: '/form/list',
+    meta: { icon: 'user' },
+    children: [
+      {
+        path: 'list',
+        name: 'List',
+        component: () => import('@/views/form/index'),
+        meta: { title: 'List' }
+      },
+      {
+        path: 'test',
+        name: 'Test',
+        component: () => import('@/views/form/test/index'),
+        meta: { title: 'Test' }
+      }
+    ]
   }
 ]
 

@@ -50,6 +50,8 @@ export default {
     },
     handleLink(item) {
       const { redirect, path } = item
+      console.log('redirect', redirect)
+      console.log('path', path)
       if (redirect) {
         this.$router.push(redirect)
         return

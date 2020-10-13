@@ -50,14 +50,14 @@ router.beforeEach(async(to, from, next) => {
       // other pages that do not have permission to access are redirected to the login page.
       // next(`/login?redirect=${to.path}`)
       next('/login')
-      console.log('没有访问权限')
+      // console.log('没有访问权限')
       NProgress.done()
     }
   }
 })
 
 router.afterEach(() => {
-  console.log('页面加载完成')
+  // console.log('页面加载完成')
   // finish progress bar
   NProgress.done()
 })

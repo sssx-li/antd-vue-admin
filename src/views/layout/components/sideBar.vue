@@ -2,7 +2,7 @@
   <div class="sidebar-container">
     <a-layout-sider v-model="isCollapsed" :trigger="null" collapsible>
       <div class="logo" />
-      <a-menu theme="dark" mode="inline" :selected-keys="activeMenu" :open-keys="openKeys" @click="menuClick" @openChange="onOpenChange">
+      <a-menu theme="dark" mode="inline" :selected-keys="currentSelectMenu" :open-keys="openKeys" @click="menuClick" @openChange="onOpenChange">
         <template v-for="item in routers">
           <template v-if="!item.hidden && item.children">
             <!-- menu -->
@@ -54,7 +54,8 @@ export default {
     }
   },
   computed: {
-    activeMenu() {
+    // 当前选中的才当项
+    currentSelectMenu() {
       return [this.$route.path]
     },
     router() {
@@ -69,6 +70,7 @@ export default {
     }
   },
   created() {
+    // 获取当前副路由(需要展开)
     const openKeys = window.sessionStorage.getItem('open-menu-key')
     if (openKeys) this.openKeys = [openKeys]
   },
@@ -80,7 +82,7 @@ export default {
       if (keyPath.length === 1) {
         this.openKeys = []
         window.sessionStorage.clear()
-      } else window.sessionStorage.setItem('open-menu-key', keyPath.pop()) // 将他们的副路由存入sessionStorage，张开激活submenu菜单
+      } else window.sessionStorage.setItem('open-menu-key', keyPath.pop()) // 将副路由存入sessionStorage，展开激活submenu菜单
     },
     // 子菜单展开/关闭的回调
     onOpenChange(openKeys) {

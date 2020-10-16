@@ -50,7 +50,7 @@ export default {
       isCollapsed: false,
       onlyOneChild: null,
       openKeys: [''],
-      rootSubmenuKeys: ['/form', '/about'], // submenu数组
+      rootSubmenuKeys: ['/form', '/about'] // submenu数组
     }
   },
   computed: {

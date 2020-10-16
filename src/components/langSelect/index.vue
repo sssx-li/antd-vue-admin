@@ -1,10 +1,13 @@
 <template>
-  <div class="lange-container">
-    <a-cascader :options="options" popup-placement="bottomRight" @change="onChange">
-      <a href="#">
+  <div class="lanage-container">
+    <a-popover class="lanage-select-box" placement="bottomRight" trigger="click" :visible="showModel" @visibleChange="showModel =! showModel">
+      <template slot="content" class="lange-content">
+        <input v-for="item in options" :key="item.value" type="text" readonly :value="item.value" :class="['lange-change',item.isDefault ? 'is-select': '']" @click="handleClick(item.value)">
+      </template>
+      <span>
         <svg-icon icon-class="language" class="select-language" />
-      </a>
-    </a-cascader>
+      </span>
+    </a-popover>
   </div>
 </template>
 
@@ -12,19 +15,21 @@
 export default {
   data() {
     return {
-      language: '',
+      language: 'en',
       options: [
-        { value: 'en', label: 'English' },
-        { value: 'zh-cn', label: '中文' }
-      ]
+        { value: 'en', label: 'English', isDefault: true },
+        { value: 'zh-cn', label: '中文', isDefault: false }
+      ],
+      showModel: false
     }
   },
   watch: {
     language: {
       handler: function(val, oldval) {
         this.options.forEach(item => {
-          item.value === this.language ? item.disabled = true : item.disabled = false
+          item.isDefault = item.value === val
         })
+        console.log(this.options)
       }
     }
   },
@@ -32,10 +37,11 @@ export default {
     this.language = this.$store.getters.language
   },
   methods: {
-    onChange(val) {
-      this.$i18n.locale = val[0]
-      this.language = val[0]
-      this.$store.dispatch('user/setLanguage', val[0])
+    handleClick(lang) {
+      this.showModel = false
+      this.$i18n.locale = lang
+      this.language = lang
+      this.$store.dispatch('user/setLanguage', lang)
       this.$message.success(this.$t('language.toggleLanguage'))
       this.$bus.$emit('change-language')
     }
@@ -44,15 +50,31 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.lange-container {
+.lanage-container {
   text-align: right;
-  margin-bottom: 5px;
 }
-.ant-cascader-menu {
-  min-height: 40px;
+.lange-change {
+  padding: 5px 12px;
+  display: block;
+  cursor: pointer;
+  width: 150px;
+  border: 0;
+  &:hover {
+    background:#F0FFF3;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+.is-select {
+  cursor: auto;
+  background: rgb(243, 245, 240);
+  &:hover {
+    outline: none;
+    background: rgb(243, 245, 240);
+  }
 }
 .select-language {
-  fill: none;
   color: #ccc;
   font-size: 18px;
   &:hover {

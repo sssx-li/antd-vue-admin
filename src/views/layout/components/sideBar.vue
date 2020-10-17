@@ -4,9 +4,9 @@
       <div class="logo" />
       <a-menu theme="dark" mode="inline" :selected-keys="currentSelectMenu" :open-keys="openKeys" @click="menuClick" @openChange="onOpenChange">
         <template v-for="item in routers">
-          <template v-if="!item.hidden && item.children">
+          <template v-if="!item.hidden">
             <!-- menu -->
-            <a-menu-item v-if="item.children.length === 1" :key="item.path === '/' ? `${item.path}${item.children[0].path}`: `${item.path}/${item.children[0].path}`">
+            <a-menu-item v-if="hasOneChildren(item.children)" :key="item.redirect">
               <a-icon :type="item.children[0] && item.children[0].meta && item.children[0].meta.icon" />
               <span class="menu-title">
                 <router-link style="display: inline-block;" :to="{path: item.path === '/' ? `${item.path}${item.children[0].path}` : `${item.path}/${item.children[0].path}`}">
@@ -15,20 +15,7 @@
               </span>
             </a-menu-item>
             <!-- submenu -->
-            <a-sub-menu v-else :key="item.path">
-              <span slot="title" class="menu-title">
-                <a-icon :type="item.meta && item.meta.icon" />
-                <span v-if="item.meta">{{ generateTitle(item.meta.title) }}</span>
-              </span>
-              <template v-for="subItem in item.children">
-                <a-menu-item v-if="!subItem.children" :key="item.path + '/' + subItem.path">
-                  <a-icon v-if="subItem.meta.icon" :type="subItem.meta && subItem.meta.icon" />
-                  <router-link style="display: inline-block;" :to="item.path + '/' + subItem.path">
-                    {{ generateTitle(subItem.meta.title) }}
-                  </router-link>
-                </a-menu-item>
-              </template>
-            </a-sub-menu>
+            <sub-menu v-else :key="item.path" :menu-info="item" :base-route="item.path" />
           </template>
         </template>
       </a-menu>
@@ -38,21 +25,27 @@
 
 <script>
 import { generateTitle } from './breadcrumb/index.js'
+import SubMenu from './subMenu'
 export default {
-  name: 'SubMenu',
+  components: {
+    SubMenu
+  },
   props: {
     collapsed: [Boolean],
     routers: {
       type: Array,
       default: () => []
+    },
+    parentNodeList: {
+      type: Array,
+      default: []
     }
   },
   data() {
     return {
       isCollapsed: false,
       onlyOneChild: null,
-      openKeys: [''],
-      rootSubmenuKeys: ['/form', '/about'] // submenu数组
+      openKeys: []
     }
   },
   computed: {
@@ -72,24 +65,28 @@ export default {
     }
   },
   created() {
-    // 获取当前副路由(需要展开)
-    const openKeys = window.sessionStorage.getItem('open-menu-key')
-    if (openKeys) this.openKeys = [openKeys]
+    const openKeysArr = (this.$route.path).split('/')
+    openKeysArr.shift()
+    openKeysArr[0] = '/' + openKeysArr[0]
+    openKeysArr.forEach((item, index) => {
+      this.openKeys.unshift(item)
+    })
   },
   methods: {
     generateTitle,
     // 点击菜单触发事件
     menuClick({ item, key, keyPath }) {
       // length为1则说明没有子菜单
-      if (keyPath.length === 1) {
-        this.openKeys = []
-        window.sessionStorage.clear()
-      } else window.sessionStorage.setItem('open-menu-key', keyPath.pop()) // 将副路由存入sessionStorage，展开激活submenu菜单
+      keyPath.length === 1 ? this.openKeys = [] : ''
     },
     // 子菜单展开/关闭的回调
     onOpenChange(openKeys) {
       const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1)
-      this.openKeys = this.rootSubmenuKeys.indexOf(latestOpenKey) === -1 ? openKeys : latestOpenKey ? [latestOpenKey] : []
+      this.openKeys = this.parentNodeList.indexOf(latestOpenKey) === -1 ? openKeys : latestOpenKey ? [latestOpenKey] : []
+    },
+    // 单个子节点
+    hasOneChildren(item) {
+      return !item.some(menu => menu.children) && item.length === 1
     }
   }
 }

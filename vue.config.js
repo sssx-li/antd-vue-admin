@@ -10,6 +10,7 @@ function resolve(dir) {
 // const port = process.env.port || process.env.npm_config_port || 9528; // dev port
 const port = 3000; // dev port
 module.exports = {
+  runtimeCompiler: true,
   publicPath: "/", // 部署应用包时的基本 URL
   outputDir: "dist", // 生产环境构建文件的目录
   assetsDir: "static", // 放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录

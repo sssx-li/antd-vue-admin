@@ -2,7 +2,7 @@
   <div class="layout-container">
     <a-layout id="components-layout-demo-custom-trigger">
       <!-- 左侧导航 -->
-      <side-bar :collapsed="collapsed" :routers="routers" />
+      <side-bar :collapsed="collapsed" :routers="routers" :parent-node-list="parentNodeList" />
       <!-- 右侧布局 -->
       <a-layout>
         <!-- 面包屑 -->
@@ -30,7 +30,8 @@ export default {
   },
   data() {
     return {
-      collapsed: false
+      collapsed: false,
+      parentNodeList: []
     }
   },
   computed: {
@@ -39,7 +40,9 @@ export default {
     }
   },
   mounted() {
-    // console.log(this.$router.options.routes) // 用于生成左侧菜单栏
+    this.$router.options.routes.forEach(item => {
+      if (item.path !== '/') this.parentNodeList.push(item.path)
+    })
   },
   methods: {
     changecollapsed() {

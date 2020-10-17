@@ -68,6 +68,43 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/menu',
+    component: Layout,
+    name: 'Menu',
+    redirect: '/menu/menu1',
+    meta: { title: 'Menu', icon: 'user' },
+    children: [
+      {
+        path: 'menu1',
+        name: 'Menu1',
+        component: () => import('@/views/menu/menu'),
+        meta: { title: 'Menu1', icon: 'user' },
+        children: [
+          {
+            path: 'menu1-1',
+            component: () => import('@/views/menu/menu1'),
+            name: 'Menu1-1',
+            meta: { title: 'Menu1-1' }
+          }
+        ]
+      },
+      {
+        path: 'menu2',
+        name: 'Menu2',
+        component: () => import('@/views/menu/menu2'),
+        meta: { title: 'Menu2', icon: 'user' },
+        children: [
+          {
+            path: 'menu2-1',
+            component: () => import('@/views/menu/menu3'),
+            name: 'Menu2-1',
+            meta: { title: 'Menu2-1' }
+          }
+        ]
+      }
+    ]
+  },
+  {
     path: '/export',
     component: Layout,
     name: 'Export',

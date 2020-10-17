@@ -2,7 +2,7 @@
   <div class="lanage-container">
     <a-popover class="lanage-select-box" placement="bottomRight" trigger="click" :visible="showModel" @visibleChange="showModel =! showModel">
       <template slot="content" class="lange-content">
-        <input v-for="item in options" :key="item.value" @click="handleClick(item.value)" type="text" readonly :value="item.value" :class="['lange-change',item.isDefault ? 'is-select': '']">
+        <input v-for="item in options" :key="item.value" type="text" readonly :value="item.value" :class="['lange-change',item.isDefault ? 'is-select': '']" @click="handleClick(item.value)">
       </template>
       <span>
         <svg-icon icon-class="language" class="select-language" />

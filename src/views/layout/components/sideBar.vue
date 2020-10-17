@@ -8,20 +8,22 @@
             <!-- menu -->
             <a-menu-item v-if="item.children.length === 1" :key="item.path === '/' ? `${item.path}${item.children[0].path}`: `${item.path}/${item.children[0].path}`">
               <a-icon :type="item.children[0] && item.children[0].meta && item.children[0].meta.icon" />
-              <router-link style="display: inline-block" :to="{path: item.path === '/' ? `${item.path}${item.children[0].path}` : `${item.path}/${item.children[0].path}`}">
-                {{ generateTitle(item.children[0].meta.title) }}
-              </router-link>
+              <span class="menu-title">
+                <router-link style="display: inline-block;" :to="{path: item.path === '/' ? `${item.path}${item.children[0].path}` : `${item.path}/${item.children[0].path}`}">
+                  {{ generateTitle(item.children[0].meta.title) }}
+                </router-link>
+              </span>
             </a-menu-item>
             <!-- submenu -->
             <a-sub-menu v-else :key="item.path">
-              <span slot="title">
+              <span slot="title" class="menu-title">
                 <a-icon :type="item.meta && item.meta.icon" />
                 <span v-if="item.meta">{{ generateTitle(item.meta.title) }}</span>
               </span>
               <template v-for="subItem in item.children">
                 <a-menu-item v-if="!subItem.children" :key="item.path + '/' + subItem.path">
                   <a-icon v-if="subItem.meta.icon" :type="subItem.meta && subItem.meta.icon" />
-                  <router-link style="display: inline-block" :to="item.path + '/' + subItem.path">
+                  <router-link style="display: inline-block;" :to="item.path + '/' + subItem.path">
                     {{ generateTitle(subItem.meta.title) }}
                   </router-link>
                 </a-menu-item>
@@ -98,5 +100,17 @@ export default {
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+}
+.menu-title {
+  display: inline-block;
+  width: 85%;
+  a {
+    display: inline-block;
+    width: 100%;
+    color: #ccc;
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 </style>

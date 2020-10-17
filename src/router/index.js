@@ -84,7 +84,15 @@ export const constantRoutes = [
             path: 'menu1-1',
             component: () => import('@/views/menu/menu1'),
             name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
+            meta: { title: 'Menu1-1', icon: 'user' },
+            children: [
+              {
+                path: 'menu1-1-1',
+                name: 'Menu1-1-1',
+                component: () => import('@/views/menu/menu3'),
+                meta: { title: 'Menu1-1-1' },
+              }
+            ]
           }
         ]
       },

@@ -1,7 +1,7 @@
 // 单元测试的脚本
 module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue'], // 需要测试的文件
-  transform: { // 告诉 Jest 用 babel-jest 处理 Java 测试文件
+  transform: { // 用 babel-jest 处理 测试文件
     '^.+\\.vue$': 'vue-jest',
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
       'jest-transform-stub',

@@ -5,7 +5,7 @@ module.exports = {
     parser: 'babel-eslint', // 解析器：默认情况下ESLint使用Espree解析器
     sourceType: 'module' // 指定源代码存在的位置，script | module，默认为script。
   },
-  env: { // 环境配置
+  env: { //环境配置
     browser: true, // 启用浏览器全局变量。
     node: true, // Node.js全局变量和Node.js范围。
     es6: true // 启用ES6的功能。

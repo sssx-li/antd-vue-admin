@@ -4,7 +4,7 @@ root = true # 是否是顶级配置文件，设置为true的时候才会停止�
 
 [*]
 charset = utf-8 # 编码格式
-indent_style = space # 缩进方式 <"tab" | "space">
+indent_style = space # 缩进方式<"tab" | "space">
 indent_size = 2 # 缩进大小
 end_of_line = lf # 换行符类型 <"lf" | "cr" | "crlf">
 insert_final_newline = true # 是否让文件以空行结束

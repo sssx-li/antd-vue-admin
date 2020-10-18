@@ -38,7 +38,7 @@ export default {
     },
     parentNodeList: {
       type: Array,
-      default: []
+      default: () => []
     }
   },
   data() {

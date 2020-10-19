@@ -49,7 +49,7 @@ export default {
     }
   },
   computed: {
-    // 当前选中的才当项
+    // 当前选中的菜单项
     currentSelectMenu() {
       return [this.$route.path]
     },

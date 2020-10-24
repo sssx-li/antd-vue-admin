@@ -2,7 +2,7 @@
   <div class="layout-container">
     <a-layout id="components-layout-demo-custom-trigger">
       <!-- 左侧导航 -->
-      <side-bar :collapsed="collapsed" :routers="routers" :parent-node-list="parentNodeList" />
+      <side-bar v-if="hideSideBar" id="sideBar" :collapsed="collapsed" :routers="routers" :parent-node-list="parentNodeList" />
       <!-- 右侧布局 -->
       <a-layout>
         <!-- 面包屑 -->
@@ -31,7 +31,9 @@ export default {
   data() {
     return {
       collapsed: false,
-      parentNodeList: []
+      parentNodeList: [],
+      device: 'desktop',
+      hideSideBar: true
     }
   },
   computed: {
@@ -39,7 +41,14 @@ export default {
       return this.$router.options.routes
     }
   },
+  watch: {
+    device(val) {
+      this.hideSideBar = val !== 'mobile'
+    }
+  },
   mounted() {
+    this.resizeHandle()
+    window.addEventListener('resize', this.resizeHandle)
     this.$router.options.routes.forEach(item => {
       if (item.path !== '/') this.parentNodeList.push(item.path)
     })
@@ -47,6 +56,16 @@ export default {
   methods: {
     changecollapsed() {
       this.collapsed = !this.collapsed
+
+      this.hideSideBar = this.device === 'desktop' ? true : !this.hideSideBar
+      console.log(this.hideSideBar)
+      // let showSideBarBox = document.getElementById('sideBar').style.display
+    },
+    resizeHandle() {
+      const WIDTH = 992
+      const { body } = document
+      const rect = body.getBoundingClientRect()
+      this.device = rect.width - 1 < WIDTH ? 'mobile' : 'desktop'
     }
   }
 }

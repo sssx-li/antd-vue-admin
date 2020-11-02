@@ -51,7 +51,7 @@ export default {
 </script>
 <style lang="less">
 #nprogress .bar {
-  background: red !important; //自定义颜色
+  background: #4cd480 !important; //自定义颜色
 }
 /deep/ .ant-message-notice-content {
   min-width: 440px!important;

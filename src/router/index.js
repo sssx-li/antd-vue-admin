@@ -21,7 +21,7 @@ export const constantRoutes = [
         path: 'dashboard',
         name: 'Home',
         component: () => import('@/views/dashboard/index'),
-        meta: { title: 'Dashboard', icon: 'user' }
+        meta: { title: 'Dashboard', icon: 'dashboard' }
       }
     ]
   },
@@ -30,40 +30,26 @@ export const constantRoutes = [
     component: Layout,
     name: 'Form',
     redirect: '/form/list',
-    meta: { icon: 'user', title: 'Form' },
     children: [
       {
         path: 'list',
-        name: 'List',
+        name: 'formList',
         component: () => import('@/views/form/index'),
-        meta: { title: 'List' }
-      },
-      {
-        path: 'test',
-        name: 'Test',
-        component: () => import('@/views/form/test/index'),
-        meta: { title: 'Test' }
+        meta: { title: 'Form', icon: 'form' }
       }
     ]
   },
   {
-    path: '/about',
+    path: '/table',
     component: Layout,
-    name: 'About',
-    redirect: '/about/table',
-    meta: { icon: 'user', title: 'About' },
+    name: 'Table',
+    redirect: '/table/table',
     children: [
       {
         path: 'table',
-        name: 'Table',
-        component: () => import('@/views/about/index'),
-        meta: { title: 'Table' }
-      },
-      {
-        path: 'about',
-        name: 'Detail',
-        component: () => import('@/views/about/about'),
-        meta: { title: 'About' }
+        name: 'tableList',
+        component: () => import('@/views/table/index'),
+        meta: { title: 'Table', icon: 'table' }
       }
     ]
   },

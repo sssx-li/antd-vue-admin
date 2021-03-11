@@ -1,7 +1,6 @@
 .DS_Store
 node_modules
 /dist
-/public/color.less
 
 
 # local env files
@@ -25,3 +24,4 @@ pnpm-debug.log*
 *.md
 
 package-lock.json
+./public/color.less

@@ -1,20 +1,17 @@
 // Eslint配置详解 https://blog.csdn.net/mafan121/article/details/77965252
 module.exports = {
-  root: true, // 以当前目录为根目录，不再向上查找 .eslintrc.js
+  root: true,
   parserOptions: {
-    parser: 'babel-eslint', // 解析器：默认情况下ESLint使用Espree解析器
-    sourceType: 'module' // 指定源代码存在的位置，script | module，默认为script。
+    parser: 'babel-eslint',
+    sourceType: 'module'
   },
-  env: { //环境配置
-    browser: true, // 启用浏览器全局变量。
-    node: true, // Node.js全局变量和Node.js范围。
-    es6: true // 启用ES6的功能。
+  env: {
+    browser: true,
+    node: true,
+    es6: true
   },
-  extends: ['plugin:vue/recommended', 'eslint:recommended'], // 共享配置
-
-  // add your custom rules here
-  // it is base on https://github.com/vuejs/eslint-config-vue
-  rules: { // 校验规则
+  extends: ['plugin:vue/recommended', 'eslint:recommended'],
+  rules: {
     'vue/max-attributes-per-line': [2, {
       'singleline': 10,
       'multiline': {
@@ -27,44 +24,28 @@ module.exports = {
     'vue/name-property-casing': ['error', 'PascalCase'],
     'vue/no-v-html': 'off',
     'accessor-pairs': 2,
-    // 箭头函数的箭头前后必须有空格
     'arrow-spacing': [2, {
       'before': true,
       'after': true
     }],
-    // @fixable 代码块如果在一行内，那么大括号内的首尾必须有空格，比如 function () { alert('Hello') }
     'block-spacing': [2, 'always'],
-    // @off else 代码块可能前面需要有一行注释
     'brace-style': [2, '1tbs', {
       'allowSingleLine': true
     }],
-    /**
-    *该规则会搜索代码中所有的下划线，它会忽略变量名开始和结尾的下划线而只检测变量中间的下划线。
-    *如果ESLint认为一个变量是常量（所有字母大写），那么在变量名字母之间添加下划线也是可以而不会报错的。
-    *该规则只检测生命和定义时的变量而不检测函数调用时的函数名。
-    **/
     'camelcase': [0, {
       'properties': 'always'
     }],
-    // 在定义对象或数组时，最后一项不能加逗号
     'comma-dangle': [2, 'never'],
-    // 在写逗号时，逗号前面不需要加空格，而逗号后面需要添加空格
     'comma-spacing': [2, {
       'before': false,
       'after': true
     }],
-    // 如果逗号可以放在行首或行尾时，那么请放在行尾
     'comma-style': [2, 'last'],
-    // 在constructor函数中，如果classes是继承其他class，那么请使用super。否者不使用super
     'constructor-super': 2,
-    // 在if-else语句中，如果if或else语句后面是多行，那么必须加大括号。如果是单行就应该省略大括号。
     'curly': [2, 'multi-line'],
-    // 该规则规定了.应该放置的位置，
     'dot-location': [2, 'property'],
     'eol-last': 2,
-    // 使用=== !== 代替== !=
     'eqeqeq': ['error', 'always', { 'null': 'ignore' }],
-    // 该规则规定了generator函数中星号两边的空白。
     'generator-star-spacing': [2, {
       'before': true,
       'after': true

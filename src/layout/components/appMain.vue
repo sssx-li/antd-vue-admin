@@ -10,7 +10,17 @@
         <div class="curmb-content">
           <bread-crumb />
           <div class="lang-select-avator">
+            <!-- select language -->
             <select-language class="select-language-box" />
+
+            <!-- select theme -->
+            <a-select :default-value="curTheme" style="width: 120px" class="select-element" @change="selectTheme">
+              <a-select-option v-for="item in themeList" :key="item.value" :value="item.value">
+                {{ item.label }}
+              </a-select-option>
+            </a-select>
+
+            <!-- avatar -->
             <span style="display: inline-block; border-right: 1px solid #ccc;height: 40px;margin: 0 10px 0 30px;" />
             <a-avatar style="backgroundColor:#87d068;margin: 0 10px;" icon="user" />
             <a-cascader :options="options" popup-placement="bottomRight" @change="onChange" @click="isUnfold = !isUnfold">
@@ -47,7 +57,27 @@ export default {
         { value: 'signout', label: 'Sign out' }
       ],
       isCollapsed: false,
-      isUnfold: false
+      isUnfold: false,
+      curTheme: 'default',
+      themeList: [
+        { value: 'default', label: '默认主题' },
+        { value: 'dark', label: '深色主题' },
+        { value: 'light', label: '浅色主题' }
+      ],
+      colorList: {
+        default: {
+          '@primary-color': '#485DFC',
+          '@btn-primary-bg': '#485DFC'
+        },
+        dark: {
+          '@primary-color': '#B6BAD9',
+          '@btn-primary-bg': '#B6BAD9'
+        },
+        light: {
+          '@primary-color': '#4217D4',
+          '@btn-primary-bg': '#4217D4'
+        }
+      }
     }
   },
   watch: {
@@ -78,12 +108,24 @@ export default {
           .catch(() => {})
       }
       this.isUnfold = !this.isUnfold
+    },
+    selectTheme(val) {
+      this.curTheme = val
+      window.less.modifyVars({ ...this.colorList[val] }).then(() => {
+        this.$message.success(this.$t('common.success'))
+      }).catch((error) => {
+        this.$message.success(this.$t('common.error'))
+        console.log(error)
+      })
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+.select-element {
+  margin-left: 20px;
+}
 .trigger {
   font-size: 18px;
   line-height: 64px;

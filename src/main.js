@@ -4,9 +4,9 @@ import router from './router'
 import store from './store'
 // 引入所有样式
 import Antd from 'ant-design-vue' // 引入antd
-import './styles/antd-variables.less'
+import 'ant-design-vue/dist/antd.less'
 import './styles/antd-vue.less'
-import i18n from './components/lang'// i18n
+import i18n from './lang'// i18n
 
 // icon
 import '@/icons'

@@ -9,7 +9,14 @@ module.exports = {
     Menu: 'Menu',
     Menu1: 'Menu1',
     Menu2: 'Menu2',
-    Export: 'Export'
+    Export: 'Export',
+    Home: 'Index',
+    formList: 'Index',
+    tableList: 'Index',
+    'Menu1-1': 'Menu1-1',
+    'Menu1-1-1': 'Menu1-1-1',
+    'Menu2-1': 'Menu2-1',
+    Index: 'Index'
   },
   login: {
     signIn: 'Sign in',

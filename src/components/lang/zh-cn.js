@@ -9,7 +9,14 @@ module.exports = {
     Menu: '菜单',
     Menu1: '菜单1',
     Menu2: '菜单2',
-    Export: '输出'
+    Export: '输出',
+    Home: 'Index',
+    formList: 'Index',
+    tableList: 'Index',
+    'Menu1-1': '菜单1-1',
+    'Menu1-1-1': '菜单1-1-1',
+    'Menu2-1': '菜单2-1',
+    Index: 'Index'
   },
   login: {
     signIn: '登录',

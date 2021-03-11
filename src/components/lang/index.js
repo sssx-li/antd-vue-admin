@@ -4,6 +4,7 @@ import enLocal from './en-ui'
 import zhLocal from './zh-cn'
 import Cookies from 'js-cookie'
 
+import store from '@/store'
 Vue.use(VueI18n)
 
 const messages = {
@@ -14,6 +15,8 @@ const messages = {
     ...zhLocal
   }
 }
+
+store.commit('user/SET_LANGUAGE', Cookies.get('antd-vue-language') || null)
 
 const i18n = new VueI18n({
   locale: Cookies.get('antd-vue-language') || 'en', // 默认为英文

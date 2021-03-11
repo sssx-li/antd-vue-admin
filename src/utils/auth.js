@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-const TokenKey = 'permission-demo'
+const TokenKey = 'antd-vue-token'
 
 export function getToken() {
   return Cookies.get(TokenKey)

@@ -17,8 +17,6 @@ Vue.config.productionTip = false
 // permission
 import '@/permission' // permission control
 
-Vue.prototype.$bus = new Vue() // event Bus 用于无关系组件间的通信。
-
 // mock
 if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')

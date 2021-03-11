@@ -3,10 +3,16 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 import Cookies from 'js-cookie'
 
+import zhCN from 'ant-design-vue/es/locale-provider/zh_CN'
+import moment from 'moment'
+import 'moment/locale/zh-cn'
+moment.locale('en') // 默认设置为英文
+
 const getDefaultState = () => {
   return {
     token: getToken(),
-    language: Cookies.get('antd-vue-language') || 'en'
+    language: Cookies.get('antd-vue-language') || 'en',
+    locale: null
   }
 }
 
@@ -21,6 +27,8 @@ const mutations = {
   },
   SET_LANGUAGE: (state, language) => {
     state.language = language
+    moment.locale(language)
+    state.locale = language === 'zh-cn' ? zhCN : null
     Cookies.set('antd-vue-language', language, { expires: 3650 }) // expires: cookies失效时间，没有设置时，那么 cookie 的生命周期只是在当前的会话中，关闭浏览器意味着这次会话的结束，此时 cookie 随之失效
   }
 }
@@ -67,7 +75,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       logout(state.token)
         .then(() => {
-          removeToken() // must remove  token  first
+          removeToken()
           resetRouter()
           commit('RESET_STATE')
           resolve()
@@ -81,7 +89,7 @@ const actions = {
   // remove token
   resetToken({ commit }) {
     return new Promise((resolve) => {
-      removeToken() // must remove  token  first
+      removeToken()
       commit('RESET_STATE')
       resolve()
     })

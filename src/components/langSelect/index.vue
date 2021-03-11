@@ -2,7 +2,7 @@
   <div class="lanage-container">
     <a-popover class="lanage-select-box" placement="bottomRight" trigger="click" :visible="showModel" @visibleChange="showModel =! showModel">
       <template slot="content" class="lange-content">
-        <input v-for="item in options" :key="item.value" type="text" readonly :value="item.value" :class="['lange-change',item.isDefault ? 'is-select': '']" @click="handleClick(item.value)">
+        <input v-for="item in languageOptions" :key="item.value" type="text" readonly :value="item.label" :class="['lange-change',item.isDefault ? 'is-select': '']" @click="handleClick(item.value)">
       </template>
       <span>
         <svg-icon icon-class="language" class="select-language" />
@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       language: 'en',
-      options: [
+      languageOptions: [
         { value: 'en', label: 'English', isDefault: true },
         { value: 'zh-cn', label: '中文', isDefault: false }
       ],
@@ -24,12 +24,10 @@ export default {
     }
   },
   watch: {
-    language: {
-      handler: function(val, oldval) {
-        this.options.forEach(item => {
-          item.isDefault = item.value === val
-        })
-      }
+    language(val) {
+      this.languageOptions.forEach(item => {
+        item.isDefault = item.value === val
+      })
     }
   },
   mounted() {
@@ -43,7 +41,6 @@ export default {
       this.language = lang
       this.$store.dispatch('user/setLanguage', lang)
       this.$message.success(this.$t('language.toggleLanguage'))
-      this.$bus.$emit('change-language')
     }
   }
 }

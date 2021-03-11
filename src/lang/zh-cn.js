@@ -22,9 +22,9 @@ module.exports = {
     signIn: '登录',
     signOut: '登出'
   },
-  breadcrumb: {
-    Dashboard: '首页',
-    List: '列表',
-    Test: '测试'
+  common: {
+    success: '成功',
+    error: '失败',
+    warning: '警告'
   }
 }

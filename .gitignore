@@ -22,5 +22,7 @@ pnpm-debug.log*
 *.sln
 *.sw?
 *.md
+yarn.lock
 
 package-lock.json
+./public/color.less

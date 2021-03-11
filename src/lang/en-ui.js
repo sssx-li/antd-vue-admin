@@ -22,9 +22,9 @@ module.exports = {
     signIn: 'Sign in',
     signOut: 'Sign out'
   },
-  breadcrumb: {
-    Dashboard: 'Dashboard',
-    List: 'List',
-    Test: 'Test'
+  common: {
+    success: 'Success',
+    error: 'Error',
+    warning: 'Warming'
   }
 }

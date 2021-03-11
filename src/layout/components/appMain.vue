@@ -10,7 +10,10 @@
         <div class="curmb-content">
           <bread-crumb />
           <div class="lang-select-avator">
+            <!-- select language -->
             <select-language class="select-language-box" />
+
+            <!-- avatar -->
             <span style="display: inline-block; border-right: 1px solid #ccc;height: 40px;margin: 0 10px 0 30px;" />
             <a-avatar style="backgroundColor:#87d068;margin: 0 10px;" icon="user" />
             <a-cascader :options="options" popup-placement="bottomRight" @change="onChange" @click="isUnfold = !isUnfold">
@@ -84,6 +87,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.select-element {
+  margin-left: 20px;
+}
 .trigger {
   font-size: 18px;
   line-height: 64px;

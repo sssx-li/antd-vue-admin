@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import Layout from '@/views/layout'
+import Layout from '@/layout'
 
 export const constantRoutes = [
   {

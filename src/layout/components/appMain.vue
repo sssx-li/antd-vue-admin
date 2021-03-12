@@ -26,7 +26,7 @@
             <a-cascader :options="options" popup-placement="bottomRight" @change="onChange" @click="isUnfold = !isUnfold">
               <a href="#">
                 <span class="handle-signout">
-                  Antd-Admin
+                  Antd
                   <a-icon style="font-size: 12px" :type="isUnfold ? 'up' : 'down'" />
                 </span>
               </a>
@@ -150,10 +150,10 @@ export default {
 }
 .handle-signout {
     // cursor: pointer;
-    color: #606266;
+    color: #fff;
     &:hover {
       // text-decoration: underline;
-      color: #4cd480;
+      color: #a5aaca;
     }
   }
   .crumbs {

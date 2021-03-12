@@ -9,15 +9,11 @@ const options = {
   mainLessFile: path.join(__dirname, "../styles/theme/index.less"),
   themeVariables: [
     "@primary-color",
-    "@secondary-color",
-    "@text-color",
-    "@text-color-secondary",
-    "@heading-color",
-    "@layout-body-background",
     "@btn-primary-bg",
+    "@layout-body-background",
     "@layout-header-background",
-    "@body-background",
-    "@breadcrumb-link-color"
+    "@breadcrumb-link-color",
+    "@menu-dark-item-active-bg"
   ],
   indexFileName: "index.html",
   outputFilePath: path.join(__dirname, "../../public/color.less"),

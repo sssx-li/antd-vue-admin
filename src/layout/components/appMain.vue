@@ -87,8 +87,12 @@ export default {
       }
     }
   },
-  mounted() {
+  created() {
     this.isCollapsed = this.collapsed
+    const theme = window.localStorage.getItem('antd-vue-theme')
+    if (theme) {
+      window.less.modifyVars(JSON.parse(theme))
+    }
   },
   methods: {
     changecollapsed() {
@@ -111,7 +115,8 @@ export default {
     },
     selectTheme(val) {
       this.curTheme = val
-      window.less.modifyVars({ ...this.colorList[val] }).then(() => {
+      window.localStorage.setItem('antd-vue-theme', JSON.stringify(this.colorList[val]))
+      window.less.modifyVars(this.colorList[val]).then(() => {
         this.$message.success(this.$t('common.success'))
       }).catch((error) => {
         this.$message.success(this.$t('common.error'))

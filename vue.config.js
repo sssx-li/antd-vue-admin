@@ -21,7 +21,7 @@ module.exports = {
     },
     /* proxy: {
       [process.env.VUE_APP_BASE_API]: {
-        target: `https://astrorelay-dev.goodcloud.xyz`, // 开发服务器
+        target: `xxxx.xxxx.xxxx`, // 开发服务器
         changeOrigin: true,
       },
     }, */

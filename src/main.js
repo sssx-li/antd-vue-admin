@@ -6,7 +6,7 @@ import store from './store'
 import Antd from 'ant-design-vue' // 引入antd
 import 'ant-design-vue/dist/antd.less'
 import './styles/antd-vue.less'
-import './styles/variable-theme.less'
+import './styles/theme/variable-theme.less'
 import i18n from './lang'// i18n
 
 // icon

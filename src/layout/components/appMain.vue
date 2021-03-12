@@ -137,27 +137,29 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.select-element {
-  margin-left: 20px;
-}
-.trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-  &:hover {
-    color: #1890ff;
+/deep/ .ant-layout-header {
+  padding: 0;
+  .select-element {
+    margin-left: 20px;
   }
-}
-.handle-signout {
-    // cursor: pointer;
-    color: #fff;
+  .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
     &:hover {
-      // text-decoration: underline;
-      color: #a5aaca;
+      color: #1890ff;
     }
   }
+  .handle-signout {
+      // cursor: pointer;
+      color: #fff;
+      &:hover {
+        // text-decoration: underline;
+        color: #a5aaca;
+      }
+    }
   .crumbs {
     display: flex;
     .curmb-content {
@@ -175,8 +177,9 @@ export default {
       }
     }
   }
-  /deep/ .ant-breadcrumb {
+  .ant-breadcrumb {
     line-height: 64px;
     height: 64px;
   }
+}
 </style>

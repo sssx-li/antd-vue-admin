@@ -1,7 +1,6 @@
 <template>
   <div>
-    menu1
-    <router-view />
+    541654564654
   </div>
 </template>
 

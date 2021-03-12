@@ -29,10 +29,10 @@ export const constantRoutes = [
     path: '/form',
     component: Layout,
     name: 'Form',
-    redirect: '/form/list',
+    redirect: '/form/index',
     children: [
       {
-        path: 'list',
+        path: 'index',
         name: 'formList',
         component: () => import('@/views/form/index'),
         meta: { title: 'Form', icon: 'form' }
@@ -63,19 +63,20 @@ export const constantRoutes = [
       {
         path: 'menu1',
         name: 'Menu1',
+        meta: { title: 'Menu1', icon: 'user', breadcrumb: false },
         component: () => import('@/views/menu/menu'),
-        meta: { title: 'Menu1', icon: 'user' },
+        redirect: 'menu1/menu1-1',
         children: [
           {
             path: 'menu1-1',
-            component: () => import('@/views/menu/menu1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1', icon: 'user' },
+            meta: { title: 'Menu1-1', icon: 'user', breadcrumb: false },
+            component: () => import('@/views/menu/menu'),
+            redirect: 'menu1-1/index',
             children: [
               {
-                path: 'menu1-1-1',
+                path: 'index',
                 name: 'Menu1-1-1',
-                component: () => import('@/views/menu/menu3'),
+                component: () => import('@/views/menu/menu1'),
                 meta: { title: 'Menu1-1-1' }
               }
             ]
@@ -85,13 +86,14 @@ export const constantRoutes = [
       {
         path: 'menu2',
         name: 'Menu2',
-        component: () => import('@/views/menu/menu2'),
-        meta: { title: 'Menu2', icon: 'user' },
+        meta: { title: 'Menu2', icon: 'user', breadcrumb: false },
+        component: () => import('@/views/menu/menu'),
+        redirect: 'menu2/index',
         children: [
           {
-            path: 'menu2-1',
-            component: () => import('@/views/menu/menu3'),
+            path: '',
             name: 'Menu2-1',
+            component: () => import('@/views/menu/menu2'),
             meta: { title: 'Menu2-1' }
           }
         ]

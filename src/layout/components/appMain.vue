@@ -19,7 +19,7 @@
             <a-cascader :options="options" popup-placement="bottomRight" @change="onChange" @click="isUnfold = !isUnfold">
               <a href="#">
                 <span class="handle-signout">
-                  Antd-Admin
+                  Antd
                   <a-icon style="font-size: 12px" :type="isUnfold ? 'up' : 'down'" />
                 </span>
               </a>

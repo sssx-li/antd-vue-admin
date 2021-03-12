@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-breadcrumb style="background: #fff; padding: 0">
+    <a-breadcrumb>
       <a-breadcrumb-item v-for="(item, index) in crumbList" :key="item.path">
         <span v-if="item.redirect==='undefined' || index == crumbList.length - 1" class="no-redirect">{{ generateTitle(item.name) }}</span>
         <a v-else @click.prevent="handleLink(item)">{{ generateTitle(item.meta.title) }}</a>

@@ -27,7 +27,7 @@ const SubMenu = {
     // Cannot overlap with properties within Menu.SubMenu.props
     menuInfo: {
       type: Object,
-      default: () => ({})
+      default: () => {}
     },
     baseRoute: {
       type: String,

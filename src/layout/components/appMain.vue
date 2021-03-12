@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-layout-header style="background: #fff; padding: 0">
+    <a-layout-header>
       <div class="crumbs">
         <a-icon
           class="trigger"
@@ -67,15 +67,21 @@ export default {
       colorList: {
         default: {
           '@primary-color': '#485DFC',
-          '@btn-primary-bg': '#485DFC'
+          '@btn-primary-bg': '#485DFC',
+          '@layout-header-background': '#485DFC',
+          '@breadcrumb-link-color': '#fff'
         },
         dark: {
-          '@primary-color': '#B6BAD9',
-          '@btn-primary-bg': '#B6BAD9'
+          '@primary-color': '#4217D4',
+          '@btn-primary-bg': '#4217D4',
+          '@layout-header-background': '#4217D4',
+          '@breadcrumb-link-color': '#fff'
         },
         light: {
-          '@primary-color': '#4217D4',
-          '@btn-primary-bg': '#4217D4'
+          '@primary-color': '#B6BAD9',
+          '@btn-primary-bg': '#B6BAD9',
+          '@layout-header-background': '#B6BAD9',
+          '@breadcrumb-link-color': '#fff'
         }
       }
     }
@@ -91,7 +97,8 @@ export default {
     this.isCollapsed = this.collapsed
     const theme = window.localStorage.getItem('antd-vue-theme')
     if (theme) {
-      window.less.modifyVars(JSON.parse(theme))
+      this.curTheme = theme
+      window.less.modifyVars(this.colorList[theme])
     }
   },
   methods: {
@@ -115,7 +122,7 @@ export default {
     },
     selectTheme(val) {
       this.curTheme = val
-      window.localStorage.setItem('antd-vue-theme', JSON.stringify(this.colorList[val]))
+      window.localStorage.setItem('antd-vue-theme', val)
       window.less.modifyVars(this.colorList[val]).then(() => {
         this.$message.success(this.$t('common.success'))
       }).catch((error) => {

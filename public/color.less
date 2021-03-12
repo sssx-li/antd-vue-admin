@@ -2,10 +2,11 @@
 @text-color: fade(@black, 65%);
 @text-color-secondary: fade(@black, 45%);
 @heading-color: fade(#000, 85%);
-@layout-body-background: #f0f2f5;
+@layout-body-background: #fff;
 @btn-primary-bg: #485DFC;
-@layout-header-background: #001529;
+@layout-header-background: #485DFC;
 @body-background: #fff;
+@breadcrumb-link-color: #fff;
 html {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
 body {color: @text-color;background-color: @body-background;}
 h1,
@@ -103,7 +104,7 @@ html {--antd-wave-shadow-color: @primary-color;}
 .ant-badge-status-purple {background: #722ed1;}
 .ant-badge-status-text {color: @text-color;}
 .ant-breadcrumb {color: @text-color;color: @text-color-secondary;}
-.ant-breadcrumb a {color: @text-color-secondary;}
+.ant-breadcrumb a {color: @breadcrumb-link-color;}
 .ant-breadcrumb a:hover {color: color(~`colorPalette("@{primary-color}", 5)`);}
 .ant-breadcrumb > span:last-child {color: @text-color;}
 .ant-breadcrumb > span:last-child a {color: @text-color;}
@@ -1385,7 +1386,7 @@ tr.ant-table-expanded-row:hover {background: #fbfbfb;}
 .ant-tag-red-inverse {color: #fff;background: #f5222d;border-color: #f5222d;}
 .ant-tag-volcano {color: #fa541c;background: #fff2e8;border-color: #ffbb96;}
 .ant-tag-volcano-inverse {color: #fff;background: #fa541c;border-color: #fa541c;}
-.ant-tag-orange {color: #fa8c16;background: #fff7e6;border-color: #ffd591;}
+.ant-tag-orange {color: #fa8c16;background: color(~`colorPalette("@{heading-color}", 1)`);border-color: #ffd591;}
 .ant-tag-orange-inverse {color: #fff;background: #fa8c16;border-color: #fa8c16;}
 .ant-tag-yellow {color: #fadb14;background: #feffe6;border-color: #fffb8f;}
 .ant-tag-yellow-inverse {color: #fff;background: #fadb14;border-color: #fadb14;}
@@ -2566,7 +2567,6 @@ this.tinycolor = tinycolor;})()`;}
 @breadcrumb-last-item-color: @text-color;
 @breadcrumb-font-size: @font-size-base;
 @breadcrumb-icon-font-size: @font-size-base;
-@breadcrumb-link-color: @text-color-secondary;
 @breadcrumb-link-color-hover: @primary-5;
 @breadcrumb-separator-color: @text-color-secondary;
 @breadcrumb-separator-margin: 0 @padding-xs;

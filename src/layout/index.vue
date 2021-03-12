@@ -68,6 +68,7 @@ export default {
 .layout-container {
   height: 100%;
   /deep/ .ant-layout {
+    height: 100%;
     &.ant-layout-has-sider {
       height: 100%;
     }

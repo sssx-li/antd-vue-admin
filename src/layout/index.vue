@@ -64,7 +64,7 @@ export default {
     resizeHandle() {
       const WIDTH = 992
       const { body } = document
-      const rect = body.getBoundingClientRect()
+      const rect = body.clientWidth
       this.device = rect.width - 1 < WIDTH ? 'mobile' : 'desktop'
     }
   }

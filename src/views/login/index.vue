@@ -100,7 +100,6 @@ export default {
 <style lang="less" scoped>
 .login-container {
   height: 100%;
-  background-color: rgb(75, 124, 189);
   position: relative;
   .loginFrom-container {
     width: 500px;

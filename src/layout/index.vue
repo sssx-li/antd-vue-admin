@@ -56,10 +56,7 @@ export default {
   methods: {
     changecollapsed() {
       this.collapsed = !this.collapsed
-
       this.hideSideBar = this.device === 'desktop' ? true : !this.hideSideBar
-      console.log(this.hideSideBar)
-      // let showSideBarBox = document.getElementById('sideBar').style.display
     },
     resizeHandle() {
       const WIDTH = 992

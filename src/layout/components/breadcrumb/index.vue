@@ -36,6 +36,7 @@ export default {
     getBreadCrumb() {
       let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
       const first = matched[0]
+      // 因为matched这里可能获取不到dashboard，为将Dashboard添加到第一个故需手动添加
       if (!this.isDashboard(first)) {
         matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }, name: 'Dashboard' }].concat(matched)
       }

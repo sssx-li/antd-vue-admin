@@ -69,19 +69,19 @@ export default {
           '@primary-color': '#485DFC',
           '@btn-primary-bg': '#485DFC',
           '@layout-header-background': '#485DFC',
-          '@breadcrumb-link-color': '#fff'
+          '@menu-dark-submenu-bg': '#222e8b'
         },
         dark: {
           '@primary-color': '#4217D4',
           '@btn-primary-bg': '#4217D4',
           '@layout-header-background': '#4217D4',
-          '@breadcrumb-link-color': '#fff'
+          '@menu-dark-submenu-bg': '#2f1097'
         },
         light: {
-          '@primary-color': '#B6BAD9',
-          '@btn-primary-bg': '#B6BAD9',
-          '@layout-header-background': '#B6BAD9',
-          '@breadcrumb-link-color': '#fff'
+          '@primary-color': '#c0ad89',
+          '@btn-primary-bg': '#c0ad89',
+          '@layout-header-background': '#c0ad89',
+          '@menu-dark-submenu-bg': '#66522c'
         }
       }
     }
@@ -96,6 +96,7 @@ export default {
   created() {
     this.isCollapsed = this.collapsed
     const theme = window.localStorage.getItem('antd-vue-theme')
+    document.querySelector('body').className = 'theme-' + (theme || 'default')
     if (theme) {
       this.curTheme = theme
       window.less.modifyVars(this.colorList[theme])
@@ -123,6 +124,7 @@ export default {
     selectTheme(val) {
       this.curTheme = val
       window.localStorage.setItem('antd-vue-theme', val)
+      document.querySelector('body').className = 'theme-' + val
       window.less.modifyVars(this.colorList[val]).then(() => {
         this.$message.success(this.$t('common.success'))
       }).catch((error) => {

@@ -16,6 +16,6 @@ export default {
 </script>
 <style lang="less">
 #nprogress .bar {
-  background: #4cd480 !important; //自定义进度条颜色
+  background: #c2f0d3 !important; //自定义进度条颜色
 }
 </style>

@@ -8,9 +8,7 @@
         <!-- 面包屑 -->
         <app-main :collapsed="collapsed" @changecollapsed="changecollapsed" />
         <!-- 内容 : 路由出口 -->
-        <a-layout-content
-          :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
-        >
+        <a-layout-content class="main-container">
           <!-- 国际化测试组件 -->
           <!-- <a-pagination :default-current="1" :total="50" show-size-changer /> -->
           <router-view />
@@ -56,16 +54,11 @@ export default {
   methods: {
     changecollapsed() {
       this.collapsed = !this.collapsed
-
       this.hideSideBar = this.device === 'desktop' ? true : !this.hideSideBar
-      console.log(this.hideSideBar)
-      // let showSideBarBox = document.getElementById('sideBar').style.display
     },
     resizeHandle() {
-      const WIDTH = 992
-      const { body } = document
-      const rect = body.clientWidth
-      this.device = rect.width - 1 < WIDTH ? 'mobile' : 'desktop'
+      const WIDTH = document.body.clientWidth
+      this.device = WIDTH - 1 < 992 ? 'mobile' : 'desktop'
     }
   }
 }
@@ -74,11 +67,16 @@ export default {
 <style lang="less" scoped>
 .layout-container {
   height: 100%;
-  .ant-layout.ant-layout-has-sider {
-    height: 100%;
-  }
-  /deep/.ant-layout-sider {
-    height: 100%;
+  /deep/ .ant-layout {
+    &.ant-layout-has-sider {
+      height: 100%;
+    }
+    .ant-layout-sider {
+      height: 100%;
+    }
+    .ant-layout-content {
+      padding: 20px;
+    }
   }
 }
 </style>

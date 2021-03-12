@@ -21,8 +21,8 @@
             </a-select>
 
             <!-- avatar -->
-            <span style="display: inline-block; border-right: 1px solid #ccc;height: 40px;margin: 0 10px 0 30px;" />
-            <a-avatar style="backgroundColor:#87d068;margin: 0 10px;" icon="user" />
+            <span class="avatar-right-line" />
+            <a-avatar class="avatar-svg" icon="user" />
             <a-cascader :options="options" popup-placement="bottomRight" @change="onChange" @click="isUnfold = !isUnfold">
               <a href="#">
                 <span class="handle-signout">
@@ -174,6 +174,15 @@ export default {
       display: flex;
       .select-language-box {
         margin-top: 5px;
+      }
+      .avatar-right-line {
+        display: inline-block;
+        border-right: 1px solid #ccc;
+        height: 40px;
+        margin: 0 10px 0 30px;
+      }
+      .avatar-svg {
+        margin: 0 10px;
       }
     }
   }
